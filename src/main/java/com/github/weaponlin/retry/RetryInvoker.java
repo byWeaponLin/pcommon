@@ -3,6 +3,9 @@ package com.github.weaponlin.retry;
 import com.github.weaponlin.function.Functions;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * TODO add wait time
+ */
 @Slf4j
 public class RetryInvoker {
 
