@@ -1,5 +1,6 @@
 package com.github.weaponlin.validate;
 
+import com.github.weaponlin.common.ErrorInfo;
 import lombok.NonNull;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -15,8 +16,8 @@ public abstract class AbstractValidateProcessor<S, T> implements InitializingBea
 
     private List<AdvanceValidator<S, T>> validators;
 
-    public Map<Long, ApiError> doValidate(@NonNull Long userId, @NonNull Long optId,
-                                          @NonNull Map<Long, S> sources, @NonNull Map<Long, T> targets) {
+    public Map<Long, ErrorInfo> doValidate(@NonNull Long userId, @NonNull Long optId,
+                                           @NonNull Map<Long, S> sources, @NonNull Map<Long, T> targets) {
         return validators.stream()
                 .map(validator -> validator.doValidate(userId, optId, sources, targets))
                 .filter(Objects::nonNull)
